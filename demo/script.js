@@ -89,25 +89,25 @@ const hexCodes = [
 
 const imgPaths = [
     // Plzeňáček
-    '/SIT Pine map/stuff/imgs/lifecycleFirstQuater.svg',
+    '/stuff/imgs/lifecycleFirstQuater.svg',
     // Plzeňák lvl.2
-    '/SIT Pine map/stuff/imgs/lifecycleSecondQuater.svg',
+    'stuff/imgs/lifecycleSecondQuater.svg',
     // lvl. 3
-    '/SIT Pine map/stuff/imgs/lifecycleThirdQuater.svg',
+    '/stuff/imgs/lifecycleThirdQuater.svg',
     // lvl. 4
-    '/SIT Pine map/stuff/imgs/lifecycleFourthQuater.svg'
+    '/stuff/imgs/lifecycleFourthQuater.svg'
 
 ]
 
 const cityStages = [
     // 00
-    '/SIT Pine map/stuff/imgs/Město0.svg',
+    '/stuff/imgs/Město0.svg',
     // firstQuater
-    '/SIT Pine map/stuff/imgs/Město1.svg',
-    '/SIT Pine map/stuff/imgs/Město2.svg',
-    '/SIT Pine map/stuff/imgs/Město3.svg',
-    '/SIT Pine map/stuff/imgs/Město4.svg',
-    '/SIT Pine map/stuff/imgs/Město5.svg',
+    '/stuff/imgs/Město1.svg',
+    '/stuff/imgs/Město2.svg',
+    '/stuff/imgs/Město3.svg',
+    '/stuff/imgs/Město4.svg',
+    '/stuff/imgs/Město5.svg',
 
 ]
 
