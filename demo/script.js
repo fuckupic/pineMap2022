@@ -91,7 +91,7 @@ const imgPaths = [
     // Plzeňáček
     '/stuff/imgs/lifecycleFirstQuater.svg',
     // Plzeňák lvl.2
-    'stuff/imgs/lifecycleSecondQuater.svg',
+    '/stuff/imgs/lifecycleSecondQuater.svg',
     // lvl. 3
     '/stuff/imgs/lifecycleThirdQuater.svg',
     // lvl. 4
