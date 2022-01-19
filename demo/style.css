@@ -38,7 +38,7 @@ li {
   transform: translate(-10vw, -30vw);
   height: 400vh;
   overflow-x: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.25s ease-out;
 }
 
 .info_bar {
@@ -84,6 +84,9 @@ li {
   gap: 5vh;
   margin-top: 3vh;
   margin-bottom: 3vh;
+
+  position: absolute;
+  top: 45%;
 }
 
 .progressHeading {
@@ -189,7 +192,7 @@ li {
   height: 1.8vh;
   width: 1%;
 
-  transition: width 1s ease-in-out;
+  transition: width 0.1s ease-out;
 }
 
 .fillingSecondQuaterBar {
@@ -198,7 +201,7 @@ li {
   background: #7b6ce6;
   height: 1.8vh;
   width: 1%;
-  transition: width 1s ease-in-out;
+  transition: width 0.1s ease-out;
 }
 
 .fillingThirdQuaterBar {
@@ -207,7 +210,7 @@ li {
   background: #00a8f0;
   height: 1.8vh;
   width: 1%;
-  transition: width 1s ease-in-out;
+  transition: width 0.1s ease-out;
 }
 
 .fillingFourthQuaterBar {
@@ -216,7 +219,7 @@ li {
   background: #2dd687;
   height: 1.8vh;
   width: 1%;
-  transition: width 1s ease-in-out;
+  transition: width 0.1s ease-out;
 }
 
 #map {
@@ -299,4 +302,45 @@ li {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.arrows {
+  display: flex;
+  position: absolute;
+  top: 85%;
+  right: 10%;
+  gap: 8vh;
+}
+
+.arrows .right::after {
+  transform: rotate(90deg) translate(1.5vh, -0.5vh);
+}
+
+.arrows .left::after {
+  transform: rotate(-90deg) translate(-1.5vh, -0.5vh);
+}
+
+.circle {
+  background: #fcc10047;
+  text-decoration: none; /* Remove that ugly underlining */
+  border-radius: 50%;
+  display: block;
+  height: 10vh;
+  width: 10vh;
+  cursor: pointer;
+
+  transition: transform 1s ease;
+}
+
+.circle::after {
+  content: '\25b2';
+  display: block;
+  color: rgba(0, 0, 0, 0.43);
+  font-size: 5vh;
+  text-align: center;
+}
+
+.circle:hover {
+  transform: scale(0.95);
+  transition: all 0.25s ease;
 }

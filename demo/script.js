@@ -5,6 +5,9 @@ const subHead = document.querySelector('.sub-head');
 const description = document.querySelector('.desc');
 const photos = document.querySelector('.photos');
 
+const buttons = document.querySelectorAll('.circle');
+const leftButton = document.querySelector('.arrows .left');
+const rightButton = document.querySelector('.arrows .right');
 
 const descs = [
     `<p>Středisko volného času RADOVÁNEK je školským zařízením pro zájmové vzdělávání. Jeho zřizovatelem je Plzeňský kraj na základě zákona č. 561/2004 Sb., o předškolním, základním, vyšším odborném a jiném vzdělávání (školský zákon) a vyhl. č. 74/2005 Sb. o zájmovém vzdělávání. Je příspěvkovou organizací. Činnost SVČ je určena pro děti, žáky, studenty a dospělé a to bez ohledu na místo jejich trvalého pobytu nebo jiné podmínky. Celoročně zajišťuje činnost pravidelnou, příležitostnou a spontánní a prázdninovou.</p>`,
@@ -99,31 +102,53 @@ const imgPaths = [
 
 ]
 
-const cityStages = [
-    // 00
-    '/stuff/imgs/Město0.svg',
-    // firstQuater
-    '/stuff/imgs/Město1.svg',
-    '/stuff/imgs/Město2.svg',
-    '/stuff/imgs/Město3.svg',
-    '/stuff/imgs/Město4.svg',
-    '/stuff/imgs/Město5.svg',
-
-]
-
 var deg = 0;
 var path = 0;
+var timer = -1;
 
-document.addEventListener('wheel', function(e) {
-    path += e.deltaY*0.02;
+function scrollUp() {
+    path += 0.2;
     deg = -path;
-    console.log(realPath());
     pineSpiral.style.transform = 'translate(-10vw, -30vw) rotate('+deg+'deg)';
+    update();
+}
 
+function scrollDown() {
+    path -= 0.2;
+    deg = -path;
+    pineSpiral.style.transform = 'translate(-10vw, -30vw) rotate('+deg+'deg)';
+    update();
+}
 
+buttons[0].addEventListener('mousedown', function(e) {
+    console.log("Stlačil to");
+    timer = setInterval(scrollUp, 0.1);
+    update()
+})
+
+buttons[0].addEventListener('mouseup', function(e) {
+    console.log("Pustil to");
+    timer = clearInterval(timer);
+    
+})
+
+buttons[1].addEventListener('mousedown', function(e) {
+    console.log("Stlačil to");
+    timer = setInterval(scrollDown, 0.1);
+    update()
+})
+
+buttons[1].addEventListener('mouseup', function(e) {
+    console.log("Pustil to");
+    timer = clearInterval(timer);
+    
+})
+
+function update() {
     // Progress bary
     if (realPath() > 0 && realPath() < 60) {
-
+        console.log(realPath()/60*100);
+        console.log(firstBar.style.width);
         wrapper.display = `block`
         
         firstBar.style.width = `${realPath()/60*100}%`;
@@ -237,7 +262,7 @@ if (realPath() > 152 && realPath() < 170) {
 }
 //   nvias
 if (realPath() > 174 && realPath() < 200) {
-    headline.style.fontSize = 5+'vh';
+    headline.style.fontSize = 6+'vh';
     description.innerHTML = descs[7]
     headline.textContent = názvy[7];
     person.src = imgPaths[2]
@@ -262,7 +287,7 @@ if (realPath() > 290 && realPath() < 350) {
     headline.textContent = názvy[10];
     person.src = imgPaths[3]
   }
- });
+ };
 
 function realPath() {
     let i = path/360;
