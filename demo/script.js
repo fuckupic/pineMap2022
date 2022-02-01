@@ -1,13 +1,58 @@
 const pineSpiral = document.querySelector('#pineSpiral');
-const wrapper = document.querySelector('.megaWrapper');
+const wrapper = document.querySelector('.wrapper');
 const headline = document.querySelector('.headline');
 const subHead = document.querySelector('.sub-head');
 const description = document.querySelector('.desc');
-const photos = document.querySelector('.photos');
+// const photos = document.querySelector('.photos');
+const person = document.querySelector('#person');
+const backgroundPeer = document.querySelector('.peer');
+const progressHeading = document.querySelector('.progressHeading');
+const introHeading = document.querySelector(".introHeading");
+const introPine = document.querySelector(".introPine");
+const introDesc = document.querySelector(".introDesc");
+const introGrad = document.querySelector('.introGrad')
+const afterDesc = document.querySelector('.afterIntro')
+const afterPar = document.querySelector('.afterPar')
 
 const buttons = document.querySelectorAll('.circle');
 const leftButton = document.querySelector('.arrows .left');
 const rightButton = document.querySelector('.arrows .right');
+const startButton = document.querySelector('.startPine')
+
+var opacityTransitions = [
+    backgroundPeer,
+    pineSpiral,
+    headline,
+    subHead,
+    description,
+    progressHeading,
+    leftButton,
+    rightButton,
+    wrapper,
+    introHeading,
+    introPine,
+    introDesc
+]
+
+var introOpacityTransitions = [
+    introPine,
+    introDesc,
+    startButton,
+    introGrad
+]
+
+var displayNone = [
+    backgroundPeer,
+    pineSpiral,
+    headline,
+    subHead,
+    description,
+    progressHeading,
+    leftButton,
+    wrapper,
+    afterDesc,
+    rightButton
+]
 
 const descs = [
     `<p>Středisko volného času RADOVÁNEK je školským zařízením pro zájmové vzdělávání. Jeho zřizovatelem je Plzeňský kraj na základě zákona č. 561/2004 Sb., o předškolním, základním, vyšším odborném a jiném vzdělávání (školský zákon) a vyhl. č. 74/2005 Sb. o zájmovém vzdělávání. Je příspěvkovou organizací. Činnost SVČ je určena pro děti, žáky, studenty a dospělé a to bez ohledu na místo jejich trvalého pobytu nebo jiné podmínky. Celoročně zajišťuje činnost pravidelnou, příležitostnou a spontánní a prázdninovou.</p>`,
@@ -25,14 +70,10 @@ const descs = [
 
 
 
-const photosInside = `<img src="https://via.placeholder.com/170x120.png?text=Mood fotka" alt="" class="first">
-<img src="https://via.placeholder.com/170x120.png?text=Mood fotka" alt="" class="second">
-<img src="https://via.placeholder.com/170x120.png?text=Mood fotka" alt="" class="third">`
+// const photosInside = `<img src="https://via.placeholder.com/170x120.png?text=Mood fotka" alt="" class="first">
+// <img src="https://via.placeholder.com/170x120.png?text=Mood fotka" alt="" class="second">
+// <img src="https://via.placeholder.com/170x120.png?text=Mood fotka" alt="" class="third">`
 
-const person = document.querySelector('#person');
-const backgroundPeer = document.querySelector('.peer');
-const subHeadBefore = document.querySelector('.sub-head::before');
-const progressHeadingBefore = document.querySelector('.progressHeading::before');
 
 const firstBar = document.querySelector('.fillingFirstQuaterBar');
 const secondBar = document.querySelector('.fillingSecondQuaterBar');
@@ -92,13 +133,13 @@ const hexCodes = [
 
 const imgPaths = [
     // Plzeňáček
-    '/stuff/imgs/lifecycleFirstQuater.svg',
+    'stuff/imgs/lifecycleFirstQuater.svg',
     // Plzeňák lvl.2
-    '/stuff/imgs/lifecycleSecondQuater.svg',
+    'stuff/imgs/lifecycleSecondQuater.svg',
     // lvl. 3
-    '/stuff/imgs/lifecycleThirdQuater.svg',
+    'stuff/imgs/lifecycleThirdQuater.svg',
     // lvl. 4
-    '/stuff/imgs/lifecycleFourthQuater.svg'
+    'stuff/imgs/lifecycleFourthQuater.svg'
 
 ]
 
@@ -106,10 +147,52 @@ var deg = 0;
 var path = 0;
 var timer = -1;
 
+// Display:none
+// Num of elements: 7
+
+for (let i = 0; i<displayNone.length; i++) {
+    displayNone[i].style.display = `none`;
+}
+
+startButton.addEventListener('click', function(e) {
+    for (let i = 0; i<introOpacityTransitions.length; i++) {
+        console.log(introOpacityTransitions[i]+" Zmizel")
+        introOpacityTransitions[i].classList.remove("fadeIn");
+        introOpacityTransitions[i].classList.add("fadeOut");
+    }
+    setTimeout(function() {
+        introHeading.classList.remove("fadeIn");
+        introHeading.classList.add("fadeOut");
+    }
+        ,1.0*1000)
+
+    setTimeout(function() {
+        for (let i = 0; i<introOpacityTransitions.length; i++) {
+            introOpacityTransitions[i].style.display = `none`;
+            introHeading.style.display = `none`;
+        }
+        afterDesc.style.display = `initial`;
+        
+    }
+    ,1.0*2000)
+    // Zobrazí button - right arrow
+    setTimeout(function() {
+        rightButton.style.display = `initial`;
+    },4000)
+
+    setTimeout(function() {
+        rightButton.classList.remove("fadeIn");
+        rightButton.classList.add("pulse");
+    },2000)
+    
+});
+
+
 function scrollUp() {
     path += 0.2;
     deg = -path;
     pineSpiral.style.transform = 'translate(-10vw, -30vw) rotate('+deg+'deg)';
+    // pineSpiral.style.transform = 'rotate('+deg+'deg)';
     update();
 }
 
@@ -117,30 +200,74 @@ function scrollDown() {
     path -= 0.2;
     deg = -path;
     pineSpiral.style.transform = 'translate(-10vw, -30vw) rotate('+deg+'deg)';
+    // pineSpiral.style.transform = 'rotate('+deg+'deg)';
     update();
 }
 
+document.addEventListener('mouseout', function(e) {
+    if (e.target === buttons[0] || e.target === buttons[1]) {
+        console.log("Opustil to");
+        timer = clearInterval(timer);
+        timer = -1;
+    }
+    
+});
+
 buttons[0].addEventListener('mousedown', function(e) {
     console.log("Stlačil to");
-    timer = setInterval(scrollUp, 0.1);
+    timer = setInterval(scrollDown, 0.1);
     update()
 })
 
 buttons[0].addEventListener('mouseup', function(e) {
     console.log("Pustil to");
     timer = clearInterval(timer);
+    timer = -1;
     
 })
 
+var counter = 0;
+
 buttons[1].addEventListener('mousedown', function(e) {
-    console.log("Stlačil to");
-    timer = setInterval(scrollDown, 0.1);
-    update()
+    if (counter !== 0) {
+        console.log("Stlačil to");
+        timer = setInterval(scrollUp, 0.1);
+        update()
+    }
+    counter++;
+
 })
 
 buttons[1].addEventListener('mouseup', function(e) {
+    console.log(counter)
     console.log("Pustil to");
     timer = clearInterval(timer);
+
+    if (counter === 1) {
+        rightButton.classList.remove('pulse');
+        rightButton.classList.remove('fadeIn');
+
+        document.querySelector('.afterIntro p').classList.remove("fadeIn");
+        document.querySelector('.afterIntro p').classList.add("fadeOut");
+
+        afterPar.style.display = "none";
+        wrapper.style.display = "flex"
+        pineSpiral.style.display = "initial"
+
+        headline.style.display = "initial"
+        subHead.style.display = "initial"
+        description.style.display = "initial"
+
+        progressHeading.style.display = "initial";
+        backgroundPeer.style.display = "initial";
+
+        
+
+        setTimeout(function() {
+            console.log("Viduna")
+        },5000)
+
+    }
     
 })
 
@@ -183,6 +310,9 @@ function update() {
                 #00a8f065 0%,
                 rgba(255, 255, 255, 1) 60%
                 )`
+            var styleElem = document.head.appendChild(document.createElement("style"));
+            styleElem.innerHTML = ".sub-head::before {background: #00a8f065;}";
+            
         }
         if (realPath() > 218 && realPath() < 340) {
             firstBar.style.width = `100%`;
