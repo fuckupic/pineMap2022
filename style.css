@@ -81,7 +81,7 @@ input {
   gap: 0;
   margin: 0;
   max-width: calc((1.46304745 + 1.57764599) * var(--quater));
-  max-height: calc(((1.223540145985401 + 1.512773722627737) * var(--quater)) +);
+  max-height: calc(((1.223540145985401 + 1.512773722627737) * var(--quater)));
   position: static;
 }
 

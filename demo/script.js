@@ -183,7 +183,12 @@ startButton.addEventListener('click', function(e) {
     setTimeout(function() {
         rightButton.classList.remove("fadeIn");
         rightButton.classList.add("pulse");
-    },2000)
+    },4000)
+    
+    setTimeout(function() {
+        leftButton.style.display = `initial`;
+    },10000)
+
     
 });
 
@@ -343,14 +348,21 @@ function update() {
       secondBar.style.width = `1%`;
       thirdBar.style.width = `1%`;
       fourthBar.style.width = `1%`;
-  }
+
+    //   leftButton.style.pointerEvents = "none"
+    //   fade(leftButton)
+    }
     // Radovánek
-  if (realPath() > 24 && realPath() < 38 ) {
-    description.innerHTML = descs[0]
-    headline.classList.add('.fadeIn')
-    headline.textContent = názvy[0];
-    subHead.textContent = subNázvy[0]
-}
+    if (realPath() > 24 && realPath() < 38 ) {
+        description.innerHTML = descs[0]
+        unfade(descs[0])
+        headline.classList.add('.fadeIn')
+        headline.textContent = názvy[0];
+        subHead.textContent = subNázvy[0];
+
+        // leftButton.style.pointerEvents = "auto"
+        // unfade(leftButton)
+    }
 //   Techmania
 if (realPath() > 43 && realPath() < 50 ) {
     description.innerHTML = descs[1]
@@ -424,4 +436,29 @@ function realPath() {
     var j = Math.floor(i);
     i -= j;
     return 360*i;
+}
+
+
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.5){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
+
+function unfade(element) {
+    var op = 0.5;  // initial opacity
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        // element.style.opacity = op;
+        // element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
 }

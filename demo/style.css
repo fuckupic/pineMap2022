@@ -184,10 +184,10 @@ p {
 
 #pineSpiral {
   position: fixed;
-  /* right: -150%;
-  bottom: -130%; */
-  transform: translate(-10vw, -30vw);
-  height: 400vh;
+  right: -70%;
+  bottom: -180%;
+  /* transform: translate(-10vw, -200vw); */
+  height: 250vh;
   overflow-x: hidden;
   transition: all 0.25s ease-out;
   user-select: none;
@@ -228,6 +228,12 @@ p {
 .desc {
   display: block;
   margin-bottom: 3vh;
+  background: rgba(248, 248, 248, 0.8);
+  padding: 1em;
+  border-radius: 25px;
+
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .desc p {
@@ -281,7 +287,7 @@ p {
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 1) 80%
+    rgba(248, 248, 248, 0.8) 80%
   );
 
   display: flex;
