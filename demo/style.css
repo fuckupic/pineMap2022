@@ -95,6 +95,8 @@ p {
   display: flex;
   flex-direction: column;
   text-align: center;
+
+  z-index: 20;
 }
 
 .introGrad {
@@ -108,19 +110,20 @@ p {
 }
 
 .introHeading {
-  position: static;
-  margin: 3vh 5rem 0 5rem;
-  font-size: 3em;
+  position: relative;
+  font-size: calc(20px + 1em);
   text-align: center;
+  z-index: 50;
+
+  margin-bottom: 0;
 }
 
 .introDesc {
   position: relative;
-  margin: 2.5vh 10rem 0 10rem;
-  background-color: rgba(255, 255, 255, calc(5 / 6));
   text-align: center;
   font-size: 1.3em;
   line-height: 1.5em;
+  z-index: 50;
 }
 
 .introPine {
@@ -135,17 +138,31 @@ p {
   z-index: 0;
 }
 
+.linkSec {
+  display: inline-flex;
+}
+
+#arrow {
+  max-height: 1em;
+  margin-right: 0.25em;
+}
+
+.link {
+  margin: 0;
+  font-weight: bold;
+}
+
 .startPine {
   width: 7.5em;
   height: 2.5em;
   background: #f8f8f8;
   position: relative;
-  border-radius: 32px;
+  border-radius: 5px;
   text-align: center;
   cursor: pointer;
   border: none;
 
-  margin-top: 2em;
+  margin-top: 1em;
 
   font-size: 1.5em;
   box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
@@ -188,11 +205,10 @@ p {
   bottom: -180%;
   /* transform: translate(-10vw, -200vw); */
   height: 250vh;
-  overflow-x: hidden;
-  transition: all 0.25s ease-out;
   user-select: none;
 
-  z-index: auto;
+  transition: all 0.25s ease;
+  z-index: 2;
 }
 
 .info_bar {
@@ -213,27 +229,26 @@ p {
   font-weight: 500;
   margin-top: 0;
 }
-
+/* 
 .sub-head::before {
   display: inline-block;
   content: '';
   height: 3vh;
   width: 3vh;
   background: #fcc200;
-  border-radius: 50%;
+  border-radius: 25%;
   margin-right: 1vh;
   transform: translateY(0.5vh);
-}
+} */
 
 .desc {
   display: block;
-  margin-bottom: 3vh;
-  background: rgba(248, 248, 248, 0.8);
+  margin-bottom: 2vh;
   padding: 1em;
-  border-radius: 25px;
+  border-radius: 7px;
 
-  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-    6px 6px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2); */
 }
 
 .desc p {
@@ -261,7 +276,7 @@ p {
   top: 65%;
 }
 
-.progressHeading::before {
+/* .progressHeading::before {
   display: inline-block;
   content: '';
   border-left: 1.5vh solid transparent;
@@ -270,12 +285,7 @@ p {
 
   margin-right: 1vh;
   transform: translateY(0.5vh);
-}
-
-.photos img {
-  border-radius: 3%;
-  max-width: 150px;
-}
+} */
 
 .peer {
   margin-top: 1vh;
@@ -283,18 +293,15 @@ p {
   width: 30vw;
   gap: 20vh;
   padding: 2vh;
-  border-radius: 3%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(248, 248, 248, 0.8) 80%
-  );
+  border-radius: 7px;
 
-  display: flex;
+  /* display: flex; */
+  display: block;
   position: fixed;
   bottom: 25%;
 
   transform: translateY(150px);
+  z-index: 20;
 
   transition: all 1s ease-in-out;
 }
@@ -363,7 +370,7 @@ p {
   height: 1.8vh;
   width: 1%;
 
-  transition: width 0.1s ease-out;
+  transition: width 0.3s ease;
 }
 
 .fillingSecondQuaterBar {
@@ -372,7 +379,7 @@ p {
   background: #7b6ce6;
   height: 1.8vh;
   width: 1%;
-  transition: width 0.1s ease-out;
+  transition: width 0.3s ease;
 }
 
 .fillingThirdQuaterBar {
@@ -381,7 +388,7 @@ p {
   background: #00a8f0;
   height: 1.8vh;
   width: 1%;
-  transition: width 0.1s ease-out;
+  transition: width 0.3s ease;
 }
 
 .fillingFourthQuaterBar {
@@ -390,7 +397,7 @@ p {
   background: #2dd687;
   height: 1.8vh;
   width: 1%;
-  transition: width 0.1s ease-out;
+  transition: width 0.3s ease;
 }
 
 #map {
@@ -501,4 +508,13 @@ p {
 .circle:hover {
   transform: scale(0.95);
   transition: all 0.25s ease;
+}
+
+#outroPerson {
+  position: relative;
+
+  max-height: 18vh;
+  transform: translate(-38em, 32.8em);
+  bottom: 6.7%;
+  left: -41.7%;
 }
