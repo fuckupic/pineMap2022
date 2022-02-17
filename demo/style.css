@@ -155,7 +155,7 @@ p {
 .startPine {
   width: 7.5em;
   height: 2.5em;
-  background: #f8f8f8;
+  background: black;
   position: relative;
   border-radius: 5px;
   text-align: center;
@@ -165,9 +165,7 @@ p {
   margin-top: 1em;
 
   font-size: 1.5em;
-  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-    6px 6px 10px rgba(0, 0, 0, 0.2);
-  color: #6f6cde;
+  color: white;
 
   z-index: 1;
 
@@ -175,15 +173,11 @@ p {
 }
 
 .startPine:hover {
-  opacity: 0.3;
-  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-    6px 6px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(0.98);
 }
 .startPine:active {
   opacity: 1;
-  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-  color: #79e3b6;
+  color: #fcc200;
 }
 
 .afterIntro p {
