@@ -185,7 +185,7 @@ const imgPaths = [
     // lvl. 4
     'stuff/imgs/lifecycleFourthQuater.svg',
     //Plzeňačka
-    'stuff/imgs/lifecycleFourthQuaterWoman.svg',
+    'stuff/imgs/lifecycleFirstQuaterWoman.svg',
     //Plzeňačka lvl.2
     'stuff/imgs/lifecycleSecondQuaterWoman.svg',
     //Plzeňačka lvl.3
@@ -408,6 +408,7 @@ function update() {
     if (realPath() > 2 && realPath() < 38 ) {
         leftButton.classList.remove('inactive');
         leftButton.classList.add('active');
+        leftButton.style.pointerEvents = "fill";
 
         description.innerHTML = descs[0]
         headline.classList.add('.fadeIn')
@@ -430,7 +431,6 @@ function update() {
         link.style.color = hexCodes[0]
         linkArrowColor.style.fill = hexCodes[0]
 
-        leftButton.style.pointerEvents = "fill";
 }
 //   nvias
 if (realPath() > 60 && realPath() < 71) {

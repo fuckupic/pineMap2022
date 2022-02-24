@@ -142,7 +142,7 @@ p {
 
 .introPine {
   position: fixed;
-  width: calc(100px + 50%);
+  width: clamp(200px, calc(100px + 50%), 100%);
   overflow: hidden;
   top: 55%;
   left: 49%;
@@ -641,4 +641,72 @@ button.active.right::after {
   transform: translate(-38em, 32.8em);
   bottom: 6.7%;
   left: -41.7%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  #pineSpiral {
+    height: 500px;
+    right: -85vw;
+    bottom: 0;
+  }
+
+  .info_bar {
+    margin-left: 2em;
+  }
+
+  .desc {
+    width: 80vw;
+    margin-bottom: 0.5em;
+  }
+
+  .desc p {
+    font-size: 15px;
+  }
+
+  .link {
+    width: 70vw;
+  }
+
+  .peer {
+    width: 65vw;
+    height: 7em;
+    transform: translateY(90px);
+  }
+
+  .progressBar {
+    width: 35vw;
+    height: 0.6em;
+    padding: 1px;
+  }
+
+  .fillingFirstQuaterBar {
+    height: 0.4em;
+  }
+  .fillingSecondQuaterBar {
+    height: 0.4em;
+  }
+  .fillingThirdQuaterBar {
+    height: 0.4em;
+  }
+  .fillingFourthQuaterBar {
+    height: 0.4em;
+  }
+
+  .progress {
+    transform: translate(20px, -10px);
+    gap: 60px;
+  }
+
+  .progressBars h4 {
+    font-size: 8.5px;
+  }
+
+  .arrows {
+    gap: 40px;
+    transform: translate(-20px, 40px);
+  }
+
+  h2 {
+    font-size: 18px;
+  }
 }
