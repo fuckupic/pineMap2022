@@ -1,12 +1,15 @@
 const pineSpiral = document.querySelector('#pineSpiral');
 const wrapper = document.querySelector('.wrapper');
 const headline = document.querySelector('.headline');
-// const subHead = document.querySelector('.sub-head');
+const subHead = document.querySelector('.sub-head');
 const description = document.querySelector('.desc');
 // const photos = document.querySelector('.photos');
 const linkSection = document.querySelector('.linkSec')
 const linkArrowColor = document.querySelector('#linkArrow');
 const link = document.querySelector('.link');
+
+const navArrows = document.querySelectorAll('.navArrow');
+const navBlock = document.querySelector('.block');
 
 const person = document.querySelector('#person');
 const backgroundPeer = document.querySelector('.peer');
@@ -18,18 +21,22 @@ const introGrad = document.querySelector('.introGrad')
 const afterDesc = document.querySelector('.afterIntro')
 const afterPar = document.querySelector('.afterPar')
 
-const buttons = document.querySelectorAll('.circle');
-const leftButton = document.querySelector('.arrows .left');
-const rightButton = document.querySelector('.arrows .right');
+const leftButton = document.querySelector('.left')
+const rightButton = document.querySelector('.right')
 const startButton = document.querySelector('.startPine')
 
 const city = document.querySelector('#svgPineCity');
+
+const firstQuater = document.querySelector('#linear-gradient')
+const secondQuater = document.querySelector('#linear-gradient-2')
+const thirdQuater = document.querySelector('#linear-gradient-3')
+const fourthQuater = document.querySelector('#linear-gradient-4')
 
 var opacityTransitions = [
     backgroundPeer,
     pineSpiral,
     headline,
-    // subHead,
+    subHead,
     description,
     progressHeading,
     leftButton,
@@ -52,16 +59,21 @@ var displayNone = [
     pineSpiral,
     headline,
     description,
-    progressHeading,
+    subHead,
+    // progressHeading,
     leftButton,
     wrapper,
     afterDesc,
     rightButton,
-    linkSection
+    // linkSection,
+    // navArrows[0],
+    // navArrows[1],
+    // navArrows[2],
+    // navArrows[3],
 ]
 
 const descs = [
-    `<p>Středisko volného času RADOVÁNEK je školským zařízením pro zájmové vzdělávání. Jeho zřizovatelem je Plzeňský kraj na základě zákona č. 561/2004 Sb., o předškolním, základním, vyšším odborném a jiném vzdělávání (školský zákon) a vyhl. č. 74/2005 Sb. o zájmovém vzdělávání. Je příspěvkovou organizací. Činnost SVČ je určena pro děti, žáky, studenty a dospělé a to bez ohledu na místo jejich trvalého pobytu nebo jiné podmínky. Celoročně zajišťuje činnost pravidelnou, příležitostnou a spontánní a prázdninovou.</p>`,
+    `<p>Středisko volného času RADOVÁNEK je školským zařízením pro zájmové vzdělávání. Jeho zřizovatelem je Plzeňský kraj na základě zákona č. 561/004 Sb., o předškolním, základním, vyšším odborném a jiném vzdělávání (školský zákon) a vyhl. č. 74/2005 Sb. o zájmovém vzdělávání. Je příspěvkovou organizací. Činnost SVČ je určena pro děti, žáky, studenty a dospělé a to bez ohledu na místo jejich trvalého pobytu nebo jiné podmínky. Celoročně zajišťuje činnost pravidelnou, příležitostnou a spontánní a prázdninovou.</p>`,
     `<p>Plzeňské science center Techmania je experimentální stanice pro zvídavé. Představuje most mezi neformálním vzděláváním a populární turistickou destinací. Cílem Techmanie je pomáhat žákům, studentům i rodinám s dětmi nacházet a rozvíjet osobní vztah k vědě a technice a v obecné rovině objevovat možnosti lidského poznání.</p>`,
     `<p>Nvias přetváří mladé generace z konzumentů na tvůrce. Vzdělává je v oblasti technologií a otevírá jim nový, neprobádaný svět. Pomáhá jim najít impuls ke tvoření. Děti se postupně naučí, jak ovládnout a naprogramovat technologie využívající strojové učení. V Nvias děti experimentují a aplikují nové dovednosti do reálných produktů.</p>`,
     `<p>Jsme úsekem Správy informačních technologií města Plzně. Jsme tu proto, abychom díky inovacím pomáhali rozvoji oboru, posouvali jeho hranice a byli profesionálním partnerem pro naše zákazníky, inspirací pro mladé talenty i pomocí pro naši komunitu. Jsme úsekem Správy informačních technologií města Plzně. Jsme tu proto, abychom díky inovacím pomáhali rozvoji oboru, posouvali jeho hranice a byli profesionálním partnerem pro naše zákazníky, inspirací pro mladé talenty i pomocí pro naši komunitu.</p>`,
@@ -119,10 +131,10 @@ const názvy = [
 ]
 
 const subNázvy = [
-    'Centrum robotiky',
-    'SIT Port',
-    'BIC Port',
-    'BIC'
+    'rozvoj talentů',
+    'preinkubace',
+    'inkubace',
+    'akcelerace'
 ]
 
 const akce = [
@@ -253,7 +265,7 @@ function scrollDown() {
 }
 
 document.addEventListener('mouseout', function(e) {
-    if (e.target === buttons[0] || e.target === buttons[1]) {
+    if (e.target === rightButton || e.target === leftButton) {
         console.log("Opustil to");
         timer = clearInterval(timer);
         timer = -1;
@@ -261,13 +273,13 @@ document.addEventListener('mouseout', function(e) {
     
 });
 
-buttons[0].addEventListener('mousedown', function(e) {
+leftButton.addEventListener('mousedown', function(e) {
     console.log("Stlačil to");
-    timer = setInterval(scrollDown, 0.1);
+    timer = setInterval(scrollDown, 0.03);
     update()
 })
 
-buttons[0].addEventListener('mouseup', function(e) {
+leftButton.addEventListener('mouseup', function(e) {
     console.log("Pustil to");
     timer = clearInterval(timer);
     timer = -1;
@@ -276,17 +288,17 @@ buttons[0].addEventListener('mouseup', function(e) {
 
 var counter = 0;
 
-buttons[1].addEventListener('mousedown', function(e) {
+rightButton.addEventListener('mousedown', function(e) {
     if (counter !== 0) {
         console.log("Stlačil to");
-        timer = setInterval(scrollUp, 0.1);
+        timer = setInterval(scrollUp, 0.03);
         update()
     }
     counter++;
 
 })
 
-buttons[1].addEventListener('mouseup', function(e) {
+rightButton.addEventListener('mouseup', function(e) {
     console.log(counter)
     console.log("Pustil to");
     timer = clearInterval(timer);
@@ -302,10 +314,10 @@ buttons[1].addEventListener('mouseup', function(e) {
         pineSpiral.style.display = "initial"
 
         headline.style.display = "initial"
-        // subHead.style.display = "initial"
+        subHead.style.display = "initial"
         description.style.display = "initial"
 
-        progressHeading.style.display = "initial";
+        // progressHeading.style.display = "initial";
         backgroundPeer.style.display = "initial";
 
     }
@@ -314,7 +326,7 @@ buttons[1].addEventListener('mouseup', function(e) {
 
 function update() {
     loops = Math.floor(path/360);
-    console.log("Ušlá cesta: "+path+" Počet koleček: "+loops);
+    // console.log("Ušlá cesta: "+path+" Počet koleček: "+loops);
     // Progress bary
     if (realPath() > 1 && realPath() < 60) {
 
@@ -329,11 +341,11 @@ function update() {
         if (loops % 2 == 0) person.src = imgPaths[0]
         else person.src = imgPaths[4]
 
-        backgroundPeer.style.background = `linear-gradient(
-            90deg,
-            ${rgbaCodes[0]},
-            rgba(255, 255, 255, 0) 60%
-            )`
+        // backgroundPeer.style.background = `linear-gradient(
+        //     90deg,
+        //     ${rgbaCodes[0]},
+        //     rgba(255, 255, 255, 0) 60%
+        //     )`
     }
     if (realPath() > 60 && realPath() < 129) {
         firstBar.style.width = `100%`;
@@ -342,22 +354,22 @@ function update() {
         if (loops % 2 == 0) person.src = imgPaths[1]
         else person.src = imgPaths[5]
         
-        backgroundPeer.style.background = `linear-gradient(
-            90deg,
-            ${rgbaCodes[1]},
-            rgba(255, 255, 255, 0) 60%
-            )`
+        // backgroundPeer.style.background = `linear-gradient(
+        //     90deg,
+        //     ${rgbaCodes[1]},
+        //     rgba(255, 255, 255, 0) 60%
+        //     )`
         }
         if (realPath() > 129 && realPath() < 218) {
             firstBar.style.width = `100%`;
             secondBar.style.width = `100%`;
             thirdBar.style.width = `${(realPath()-60-69)/89*100}%`;
             
-            backgroundPeer.style.background = `linear-gradient(
-                90deg,
-                ${rgbaCodes[2]},
-                rgba(255, 255, 255, 0) 60%
-                )`
+            // backgroundPeer.style.background = `linear-gradient(
+            //     90deg,
+            //     ${rgbaCodes[2]},
+            //     rgba(255, 255, 255, 0) 60%
+            //     )`
             
         }
         if (realPath() > 218 && realPath() < 358) {
@@ -366,11 +378,11 @@ function update() {
             thirdBar.style.width = `100%`;
             fourthBar.style.width = `${(realPath()-60-69-89)/140*100}%`;
             
-            backgroundPeer.style.background = `linear-gradient(
-                90deg,
-                ${rgbaCodes[3]},
-                rgba(255, 255, 255, 0) 60%
-                )`
+            // backgroundPeer.style.background = `linear-gradient(
+            //     90deg,
+            //     ${rgbaCodes[3]},
+            //     rgba(255, 255, 255, 0) 60%
+            //     )`
             }
             if (realPath() > 358 && realPath() < 360) {
         firstBar.style.width = `100%`;
@@ -380,49 +392,54 @@ function update() {
     }
     
     if (realPath() > 1 && realPath() < 2) {
-      console.log("realPath < 0");
       i=0;
       j=0;
       k=0;
 
-      firstBar.style.width = `1%`;
-      secondBar.style.width = `1%`;
-      thirdBar.style.width = `1%`;
-      fourthBar.style.width = `1%`;
+      firstBar.style.width = `3%`;
+      secondBar.style.width = `3%`;
+      thirdBar.style.width = `3%`;
+      fourthBar.style.width = `3%`;
 
-      
+      leftButton.style.pointerEvents = "none";
+      leftButton.classList.remove('active');
     }
     // Radovánek
     if (realPath() > 2 && realPath() < 38 ) {
+        leftButton.classList.remove('inactive');
+        leftButton.classList.add('active');
+
         description.innerHTML = descs[0]
         headline.classList.add('.fadeIn')
         headline.textContent = názvy[0];
-
-        description.style.background = rgbaCodes[0]
-        link.style.color = hexCodes[0]
-        linkArrowColor.style.fill = hexCodes[0]
-        // subHead.textContent = subNázvy[0];
         
-        // leftButton.style.pointerEvents = "auto"
-        // unfade(leftButton)
+        subHead.textContent = subNázvy[0]
+        subHead.style.color = rgbaCodes[0]
+        link.style.color = hexCodes[0]
+        link.innerHTML = "Zjistit více o "+`${názvy[0]}`
+        linkArrowColor.style.fill = hexCodes[0]
     }
     //   Techmania
     if (realPath() > 43 && realPath() < 50 ) {
         description.innerHTML = descs[1]
         headline.textContent = názvy[1];
-        // subHead.textContent = subNázvy[0]
-
-        description.style.background = rgbaCodes[0]
+        subHead.textContent = subNázvy[0]
+        
+        subHead.style.color = rgbaCodes[0]
+        link.innerHTML = "Zjistit více o "+`${názvy[1]}`;
         link.style.color = hexCodes[0]
         linkArrowColor.style.fill = hexCodes[0]
+
+        leftButton.style.pointerEvents = "fill";
 }
 //   nvias
 if (realPath() > 60 && realPath() < 71) {
     description.innerHTML = descs[2]
     headline.textContent = názvy[2];
-    // subHead.textContent = subNázvy[1]
+    subHead.textContent = subNázvy[1]
 
-    description.style.background = rgbaCodes[1]
+    link.innerHTML = "Zjistit více o "+`${názvy[2]}`
+    subHead.style.color = rgbaCodes[1]
     link.style.color = hexCodes[1]
     linkArrowColor.style.fill = hexCodes[1]
 }
@@ -430,10 +447,11 @@ if (realPath() > 60 && realPath() < 71) {
 if (realPath() > 75 && realPath() < 91) {
     description.innerHTML = descs[3]
     headline.textContent = názvy[3];
+    link.innerHTML = "Zjistit více o "+`${názvy[3]}`
     if (loops % 2 == 0) person.src = imgPaths[1]
-        else person.src = imgPaths[5]
-
-    description.style.background = rgbaCodes[1]
+    else person.src = imgPaths[5]
+    
+    subHead.style.color = rgbaCodes[1]
     link.style.color = hexCodes[1]
     linkArrowColor.style.fill = hexCodes[1]
 }
@@ -441,10 +459,11 @@ if (realPath() > 75 && realPath() < 91) {
 if (realPath() > 104 && realPath() < 120) {
     description.innerHTML = descs[4]
     headline.textContent = názvy[4];
+    link.innerHTML = "Zjistit více o "+`${názvy[4]}`
     if (loops % 2 == 0) person.src = imgPaths[1]
         else person.src = imgPaths[5]
-    
-    description.style.background = rgbaCodes[1]
+        
+        subHead.style.color = rgbaCodes[1]
     link.style.color = hexCodes[1]
     linkArrowColor.style.fill = hexCodes[1]
 }
@@ -452,11 +471,12 @@ if (realPath() > 104 && realPath() < 120) {
 if (realPath() > 129 && realPath() < 140) {
     description.innerHTML = descs[5]
     headline.textContent = názvy[5];
-    // subHead.textContent = subNázvy[2]
+    subHead.textContent = subNázvy[2]
+    link.innerHTML = "Zjistit více o "+`${názvy[5]}`
     if (loops % 2 == 0) person.src = imgPaths[2]
-        else person.src = imgPaths[6]
+    else person.src = imgPaths[6]
     
-    description.style.background = rgbaCodes[2]
+    subHead.style.color = rgbaCodes[2]
     link.style.color = hexCodes[2]
     linkArrowColor.style.fill = hexCodes[2]
     
@@ -465,37 +485,36 @@ if (realPath() > 129 && realPath() < 140) {
 if (realPath() > 152 && realPath() < 170) {
     description.innerHTML = descs[6]
     headline.textContent = názvy[6];
+    link.innerHTML = "Zjistit více o "+`${názvy[6]}`
     if (loops % 2 == 0) person.src = imgPaths[2]
     else person.src = imgPaths[6]
     
-    headline.style.fontSize = 7+'vh';
-
-    description.style.background = rgbaCodes[2]
+    subHead.style.color = rgbaCodes[2]
     link.style.color = hexCodes[2]
     linkArrowColor.style.fill = hexCodes[2]
 }
 //   Polygon
 if (realPath() > 174 && realPath() < 200) {
-    headline.style.fontSize = 6+'vh';
     description.innerHTML = descs[7]
     headline.textContent = názvy[7];
     if (loops % 2 == 0) person.src = imgPaths[2]
     else person.src = imgPaths[6]
-
-    description.style.background = rgbaCodes[2]
+    
+    subHead.style.color = rgbaCodes[2]
+    link.innerHTML = "Zjistit více o "+`${názvy[7]}`
     link.style.color = hexCodes[2]
     linkArrowColor.style.fill = hexCodes[2]
 }
 //   VTP
 if (realPath() > 218 && realPath() < 240) {
-    headline.style.fontSize = 7+'vh';
     description.innerHTML = descs[8]
     headline.textContent = názvy[8];
-    // subHead.textContent = subNázvy[3]
+    subHead.textContent = subNázvy[3]
+    link.innerHTML = "Zjistit více o "+`${názvy[8]}`
     if (loops % 2 == 0) person.src = imgPaths[3]
     else person.src = imgPaths[7]
-
-    description.style.background = rgbaCodes[3]
+    
+    subHead.style.color = rgbaCodes[3]
     link.style.color = hexCodes[3]
     linkArrowColor.style.fill = hexCodes[3]
 }
@@ -505,8 +524,9 @@ if (realPath() > 255 && realPath() < 280) {
     headline.textContent = názvy[9];
     if (loops % 2 == 0) person.src = imgPaths[3]
     else person.src = imgPaths[7]
-
-    description.style.background = rgbaCodes[3]
+    
+    subHead.style.color = rgbaCodes[3]
+    link.innerHTML = "Zjistit více o "+`${názvy[9]}`
     link.style.color = hexCodes[3]
     linkArrowColor.style.fill = hexCodes[3]
 }
@@ -517,22 +537,26 @@ if (realPath() > 290 && realPath() < 350) {
     if (loops % 2 == 0) person.src = imgPaths[3]
     else person.src = imgPaths[7]
 
-    description.style.background = rgbaCodes[3]
+    subHead.style.color = rgbaCodes[3]
+    link.innerHTML = "Zjistit více o "+`${názvy[10]}`
     link.style.color = hexCodes[3]
     linkArrowColor.style.fill = hexCodes[3]
   }
-if (realPath() > 358) {
+if (realPath() > 356) {
     fade(headline);
     // fade(subHead);
-    fade(description)
-    fade(linkSection)
+    fade(description);
+    fade(linkSection);
+    fade(subHead);
 
     
     city.classList.remove('fadeOut')
     city.classList.add('fadeIn')
-    
-    path += pathToTheEnd();
-    update();
+    console.log(realPath())
+    console.log(path)
+    path += pathToTheEnd()+1;
+    console.log(path)
+    console.log(realPath())
     
     leftButton.style.pointerEvents = "none";
     rightButton.style.pointerEvents = "none";
@@ -567,22 +591,23 @@ if (realPath() > 358) {
     startButton.onclick = function() {
         if (loops % 2 == 0) {
             person.src = imgPaths[0]
-            progressHeading.innerHTML = progressHeadings[0]
+            // progressHeading.innerHTML = progressHeadings[0]
         }
         else {
             person.src = imgPaths[4]
-            progressHeading.innerHTML = progressHeadings[1]
+            // progressHeading.innerHTML = progressHeadings[1]
         }
         
         fade(city);
         unfade(leftButton);
         unfade(rightButton);
-        leftButton.style.pointerEvents = "auto";
-        rightButton.style.pointerEvents = "auto";
+        leftButton.style.pointerEvents = "fill";
+        rightButton.style.pointerEvents = "fill";
         
         unfade(headline)
-        // unfade(subHead)
+        unfade(subHead)
         unfade(description)
+        unfade(linkSection)
         
         
         fade(introHeading)
@@ -594,7 +619,6 @@ if (realPath() > 358) {
         startButton.style.display = 'none'
         
     }
-    
     
 }
 };

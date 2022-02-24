@@ -8,7 +8,20 @@
 
 @font-face {
   font-family: 'Campton';
-  src: url(stuff/campton);
+  font-weight: bold;
+  src: url('stuff/campton/CamptonBold.otf'); /* IE9 Compat Modes */
+  src: url('stuff/campton/Campton-Bold.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('stuff/campton/Campton-Bold.woff')
+      format('woff');
+}
+
+@font-face {
+  font-family: 'Campton';
+  font-weight: 400;
+  src: url('stuff/campton/CamptonBook.otf'); /* IE9 Compat Modes */
+  src: url('stuff/campton/Campton-Book.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('stuff/campton/Campton-Book.woff')
+      format('woff');
 }
 
 h1,
@@ -16,7 +29,8 @@ h2,
 h3,
 h4,
 p,
-li {
+li,
+span {
   font-family: 'Campton';
   transition: all ease;
 }
@@ -61,27 +75,27 @@ p {
 
 @-webkit-keyframes pulse {
   0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
   }
   70% {
-    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
   }
   100% {
-    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 @keyframes pulse {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
-    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
   }
   70% {
-    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
-    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    -moz-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
   }
   100% {
-    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
-    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 
@@ -149,7 +163,16 @@ p {
 
 .link {
   margin: 0;
-  font-weight: bold;
+  font-weight: 400;
+  text-decoration: underline;
+
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+}
+
+.link:hover {
+  transform: scale(0.98);
 }
 
 .startPine {
@@ -197,7 +220,7 @@ p {
   position: fixed;
   right: -70%;
   bottom: -180%;
-  /* transform: translate(-10vw, -200vw); */
+  transform: translate(-10vw, -30vw);
   height: 250vh;
   user-select: none;
 
@@ -207,47 +230,47 @@ p {
 
 .info_bar {
   margin: 3.5vh 0 7vh 7vh;
-  max-width: 50vw;
+  max-width: calc(100vw / 3);
 }
 
 .info_bar h2 {
-  font-size: 7vh;
-  margin: 0;
+  font-size: 4vh;
+  margin-top: 0;
+  margin-bottom: 0.5em;
 
   transition: opacity 1s ease;
 }
 
 .info_bar h3 {
   display: block;
-  font-size: 3vh;
-  font-weight: 500;
+  font-size: 1.5vh;
+  font-weight: bold;
+  text-transform: uppercase;
   margin-top: 0;
-}
-/* 
-.sub-head::before {
-  display: inline-block;
-  content: '';
-  height: 3vh;
-  width: 3vh;
-  background: #fcc200;
-  border-radius: 25%;
-  margin-right: 1vh;
-  transform: translateY(0.5vh);
-} */
+  margin-bottom: 0;
 
+  letter-spacing: 1px;
+
+  transition: all 0.5s ease;
+}
 .desc {
   display: block;
+
   margin-bottom: 2vh;
-  padding: 1em;
   border-radius: 7px;
 
   /* box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-    6px 6px 10px rgba(0, 0, 0, 0.2); */
+  6px 6px 10px rgba(0, 0, 0, 0.2); */
 }
 
 .desc p {
   position: relative;
   z-index: 20;
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+  transition: all 0.5s ease;
 }
 
 .photos {
@@ -286,7 +309,7 @@ p {
   max-height: 20vh;
   width: 30vw;
   gap: 20vh;
-  padding: 2vh;
+  padding: 4vh 2vh;
   border-radius: 7px;
 
   /* display: flex; */
@@ -297,7 +320,9 @@ p {
   transform: translateY(150px);
   z-index: 20;
 
-  transition: all 1s ease-in-out;
+  background-color: #e2ecf0;
+
+  transition: all 1s ease;
 }
 
 .plainInfo {
@@ -340,8 +365,10 @@ p {
 }
 
 .progressBars h4 {
-  font-weight: 400;
-  font-size: 1.25vh;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 0.66em;
   margin-bottom: 0.25vh;
 }
 
@@ -351,7 +378,7 @@ p {
   border-radius: 100px;
   align-items: center;
   position: relative;
-  padding: 5px;
+  padding: 2px;
   display: flex;
   height: 2vh;
   width: 20vw;
@@ -465,43 +492,146 @@ p {
   display: flex;
   position: fixed;
   top: 85%;
-  right: 10%;
-  gap: 8vh;
+  right: 2%;
+  gap: 1em;
 
   z-index: 100;
 }
 
-.arrows .right::after {
-  transform: rotate(90deg) translate(1.5vh, -0.5vh);
+.arrows button {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  transition: transform 0.25s ease;
+  border: none;
 }
 
-.arrows .left::after {
-  transform: rotate(-90deg) translate(-1.5vh, -0.5vh);
+.arrows .active {
+  color: white;
+  cursor: pointer;
+  background: #000000d5;
 }
 
-.circle {
-  background: #fcc10047;
-  text-decoration: none; /* Remove that ugly underlining */
+.arrows .inactive {
+  color: #80abbc;
+  cursor: pointer;
+  background: #e2ecf0;
+
+  pointer-events: none;
+  cursor: auto;
+}
+
+button.active.left::before {
+  content: '\2190';
+  color: rgba(255, 255, 255, 1);
+  font-size: 3vh;
+
+  margin-right: 0.5em;
+
+  transform: translateY(-0.1em);
+}
+
+button.inactive.left::before {
+  content: '\2190';
+  color: #80abbc;
+  font-size: 3vh;
+
+  margin-right: 0.5em;
+
+  transform: translateY(-0.1em);
+}
+
+button.active.right::after {
+  content: '\2192';
+  color: rgba(255, 255, 255, 1);
+  font-size: 3vh;
+  margin-left: 0.5em;
+  transform: translateY(-0.1em);
+}
+
+.arrows button:hover {
+  transform: scale(0.99);
+  transition: all 0.25s ease;
+}
+
+/* .arrow-wrapper {
+  display: inline-flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  user-select: none;
+
+  top: 85%;
+  right: 10%;
+  gap: 1vh;
+
+  z-index: 20;
+}
+
+.navArrow {
+  max-width: 1.5em;
+  background: black;
+  padding: 1em;
   border-radius: 50%;
-  display: block;
-  height: 10vh;
-  width: 10vh;
+
   cursor: pointer;
 
-  transition: transform 1s ease;
+  transition: all 1s ease;
 }
 
-.circle::after {
-  content: '\25b2';
-  display: block;
-  color: rgba(0, 0, 0, 0.43);
-  font-size: 5vh;
-  text-align: center;
+.navArrow:hover #Line,
+.navArrow:hover #Line2 {
+  transform: translateX(0%);
 }
 
-.circle:hover {
-  transform: scale(0.95);
-  transition: all 0.25s ease;
+.navArrow:hover #Pointer-2 {
+  opacity: 0;
+}
+
+#Arrow2 {
+  max-width: 2em;
+}
+
+#Line,
+#Line2,
+#Pointer,
+#Pointer-2 {
+  transition: all 0.5s ease;
+}
+
+#Line {
+  transform: translateX(-100%);
+}
+
+#Line2 {
+  transform: translateX(100%);
+}
+
+.navFill {
+  fill: #fff;
+}
+*/
+
+.block {
+  width: 20em;
+  background: rgba(252, 194, 0, 0.75);
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
 }
 
 #outroPerson {
