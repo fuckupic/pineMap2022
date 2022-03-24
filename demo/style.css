@@ -460,9 +460,9 @@ p {
 }
 
 .arrows button {
-  display: flex;
-  justify-items: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-items: center; */
+  /* align-items: center; */
   font-size: 0.75em;
   font-weight: bold;
   padding-top: 0.5em;
@@ -608,8 +608,10 @@ button.active.right::after {
 
   .arrows .active {
     width: 85vw;
-    align-self: center;
-    justify-self: center;
+    margin-bottom: 2vh;
+    /* align-self: center; */
+    /* top: 20%; */
+    /* justify-self: center; */
   }
 
   .progress #person {
