@@ -618,7 +618,7 @@ button.active.right::after {
   }
 
   .builtCity {
-    bottom: 26%;
+    top: 51%;
     width: 16em;
   }
 
@@ -655,8 +655,7 @@ button.active.right::after {
   .peer {
     width: 80vw;
     height: 5em;
-    transform: translateY(90px);
-    bottom: 25%;
+    top: 72.5%;
     padding: 2vh 1vh 1vh 0;
   }
 
