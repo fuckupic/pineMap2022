@@ -339,12 +339,12 @@ p {
 }
 
 .peer {
-  bottom: 25%;
-  transform: translateY(8em);
+  bottom: 5%;
+  /* transform: translateY(8em); */
 }
 
 .builtCity {
-  bottom: 27%;
+  bottom: 22.5%;
   /* transform: translateY(150px); */
   z-index: 1;
   position: absolute;
@@ -453,10 +453,9 @@ p {
 .arrows {
   display: flex;
   position: fixed;
-  top: 85%;
+  bottom: 7%;
   right: 2%;
   gap: 1em;
-
   z-index: 100;
 }
 
@@ -619,7 +618,7 @@ button.active.right::after {
   }
 
   .builtCity {
-    bottom: 35%;
+    bottom: 26%;
     width: 16em;
   }
 
