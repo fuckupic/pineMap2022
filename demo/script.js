@@ -6,7 +6,7 @@ const description = document.querySelector('.desc');
 // const photos = document.querySelector('.photos');
 const linkSection = document.querySelector('.linkSec')
 const linkArrowColor = document.querySelector('#linkArrow');
-const linkSec = document.querySelector('link');
+const linkSec = document.querySelector('.link');
 
 const navArrows = document.querySelectorAll('.navArrow');
 const navBlock = document.querySelector('.block');
@@ -21,11 +21,11 @@ const introGrad = document.querySelector('.introGrad')
 const afterDesc = document.querySelector('.afterIntro')
 const afterPar = document.querySelector('.afterPar')
 
-const leftButton = document.querySelector('.left')
+// const leftButton = document.querySelector('.left')
 const rightButton = document.querySelector('.right')
 const startButton = document.querySelector('.startPine')
 
-const city = document.querySelector('#svgPineCity');
+// const city = document.querySelector('#svgPineCity');
 
 const firstQuater = document.querySelector('#linear-gradient')
 const secondQuater = document.querySelector('#linear-gradient-2')
@@ -37,6 +37,8 @@ const secondBar = document.querySelector('.fillingSecondQuaterBar');
 const thirdBar = document.querySelector('.fillingThirdQuaterBar');
 const fourthBar = document.querySelector('.fillingFourthQuaterBar');
 
+const cityBuilds = document.querySelector('#cityBuilds');
+
 const pop = new Audio('sounds/popSound.mp3')
 pop.volume = 0.1;
 
@@ -47,7 +49,7 @@ var opacityTransitions = [
     subHead,
     description,
     progressHeading,
-    leftButton,
+    // leftButton,
     rightButton,
     wrapper,
     introHeading,
@@ -72,9 +74,9 @@ var displayNone = [
     wrapper,
     afterDesc,
     rightButton,
-    leftButton,
+    // leftButton,
     linkSec,
-    // linkSection,
+    linkSection,
     // navArrows[0],
     // navArrows[1],
     // navArrows[2],
@@ -86,7 +88,8 @@ var displayNoneRegular = [
     description,
     subHead,
     afterDesc,
-    linkSec,
+    linkSection,
+    linkSec
 ]
 
 const introDescs = [
@@ -122,18 +125,18 @@ const progressHeadings = [
 
 const allText = [
 
-    [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        'stuff/imgs/manPhase1.svg',
-        'stuff/imgs/manPhaseWoman.svg'
-    ],
+    // [
+    //     "",
+    //     "",
+    //     "",
+    //     "",
+    //     "",
+    //     "",
+    //     "",
+    //     "",
+    //     'stuff/imgs/manPhase1.svg',
+    //     'stuff/imgs/womanPhase1.svg'
+    // ],
     [
         "Rozvoj talentů",
         "Radovánek",
@@ -144,7 +147,7 @@ const allText = [
         '3%',
         '3%',
         'stuff/imgs/manPhase1.svg',
-        'stuff/imgs/manPhaseWoman.svg'
+        'stuff/imgs/womanPhase1.svg'
     ],
     [
         "Rozvoj talentů",
@@ -156,7 +159,7 @@ const allText = [
         '3%',
         '3%',
         'stuff/imgs/manPhase1.svg',
-        'stuff/imgs/manPhaseWoman.svg'
+        'stuff/imgs/womanPhase1.svg'
 
     ],
     [
@@ -169,7 +172,7 @@ const allText = [
         '3%',
         '3%',
         'stuff/imgs/manPhase2.svg',
-        'stuff/imgs/lifecycleSecondQuaterWoman.svg'
+        'stuff/imgs/manPhase2.svg'
     ],
     [   
         "preinkubace",
@@ -181,7 +184,7 @@ const allText = [
         '3%',
         '3%',
         'stuff/imgs/manPhase2.svg',
-        'stuff/imgs/lifecycleSecondQuaterWoman.svg'
+        'stuff/imgs/womanPhase2.svg'
     ],
     [
         "preinkubace",
@@ -193,7 +196,7 @@ const allText = [
         '3%',
         '3%',
         'stuff/imgs/manPhase3.svg',
-        'stuff/imgs/lifecycleSecondQuaterWoman.svg'
+        'stuff/imgs/womanPhase3.svg',
     ],
     [
         "inkubace",
@@ -205,7 +208,7 @@ const allText = [
         '33%',
         '3%',
         'stuff/imgs/manPhase3.svg',
-        'stuff/imgs/lifecycleThirdQuaterWoman.svg',
+        'stuff/imgs/womanPhase3.svg',
     ],
     [
         "inkubace",
@@ -217,7 +220,7 @@ const allText = [
         '66%',
         '3%',
         'stuff/imgs/manPhase4.svg',
-        'stuff/imgs/lifecycleThirdQuaterWoman.svg'
+        'stuff/imgs/womanPhase4.svg',
     ],
     [
         "inkubace",
@@ -229,7 +232,7 @@ const allText = [
         '100%',
         '3%',
         'stuff/imgs/manPhase4.svg',
-        'stuff/imgs/lifecycleThirdQuaterWoman.svg'
+        'stuff/imgs/womanPhase4.svg'
     ],
     [
         "akcelerace",
@@ -241,7 +244,7 @@ const allText = [
         '100%',
         '33%',
         'stuff/imgs/manPhase4.svg',
-        'stuff/imgs/lifecycleFourthQuaterWoman.svg',
+        'stuff/imgs/womanPhase4.svg',
     ],
     [
         "akcelerace",
@@ -253,7 +256,7 @@ const allText = [
         '100%',
         '66%',
         'stuff/imgs/manPhase5.svg',
-        'stuff/imgs/lifecycleFourthQuaterWoman.svg',
+        'stuff/imgs/womanPhase5.svg',
     ],
     [
         "akcelerace",
@@ -265,24 +268,23 @@ const allText = [
         '100%',
         '100%',
         'stuff/imgs/manPhase5.svg',
-        'stuff/imgs/lifecycleFourthQuaterWoman.svg',
+        'stuff/imgs/womanPhase5.svg',
     ],
     [
         "Level Up!",
         "",
         "",
         "",
-        "",
-        "",
-        "",
-        "",
-        'stuff/imgs/manPhase1vg',
-        'stuff/imgs/lifecycleFirstQuaterWoman.svg'
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        'stuff/imgs/manPhase1.svg',
+        'stuff/imgs/womanPhase1.svg'
     ]
 ]
 
 checkPoints = [
-    0,
     10, //Radovánek
     10, //Techmania
     12.5, //nvias
@@ -298,17 +300,17 @@ checkPoints = [
 ]
 
 buildings = [
-    document.getElementById('YelBuil1'),
-    document.getElementById('YelBuil2'),
-    document.getElementById('PurpBuil1'),
-    document.getElementById('PurpBuil2'),
-    document.getElementById('PurpBuil3'),
-    document.getElementById('BlueBuil1'),
-    document.getElementById('BlueBuil2'),
-    document.getElementById('BlueBuil3'),
-    document.getElementById('GreenBuil1'),
-    document.getElementById('GreenBuil2'),
-    document.getElementById('GreenBuil3'),
+    document.querySelector('#yellowBuilds #phase1-4'),
+    document.querySelector('#yellowBuilds #phase2-4'),
+    document.querySelector('#purpleBuilds #phase1-3'),
+    document.querySelector('#purpleBuilds #phase2-3'),
+    document.querySelector('#purpleBuilds #phase3-3'),
+    document.querySelector('#blueBuilds #phase1-2'),
+    document.querySelector('#blueBuilds #phase2-2'),
+    document.querySelector('#blueBuilds #phase3-2'),
+    document.querySelector('#greenBuilds #phase1'),
+    document.querySelector('#greenBuilds #phase2'),
+    document.querySelector('#greenBuilds #phase3')
 ]
 
 const levely = [
@@ -326,38 +328,19 @@ const levely = [
     `RIS3 strategie`,
     `Enterprise Europe Network`
 ]
-const imgPaths = [
-    // Plzeňáček
-    'stuff/imgs/lifecycleFirstQuater.svg',
-    // Plzeňák lvl.2
-    'stuff/imgs/lifecycleSecondQuater.svg',
-    // lvl. 3
-    'stuff/imgs/lifecycleThirdQuater.svg',
-    // lvl. 4
-    'stuff/imgs/lifecycleFourthQuater.svg',
-    //Plzeňačka
-    'stuff/imgs/lifecycleFirstQuaterWoman.svg',
-    //Plzeňačka lvl.2
-    'stuff/imgs/lifecycleSecondQuaterWoman.svg',
-    //Plzeňačka lvl.3
-    'stuff/imgs/lifecycleThirdQuaterWoman.svg',
-    //Plzeňačka lvl.4
-    'stuff/imgs/lifecycleFourthQuaterWoman.svg',
-]
+
 var deg = 0;
 var path = 0;
 var loops = 0;
-
-// Display:none
-// Num of elements: 7
 
 
 // Nechá zmizet město, které není ve wrapperu
 for (let i = 0; i<displayNone.length; i++) {
     displayNone[i].style.display = `none`;
 }
+
 function hideCities() {
-    city.style.opacity = '0'
+    // city.style.opacity = '0'
     for (let index = 0; index < buildings.length; index++) {
         buildings[index].style.opacity = '0'
         
@@ -402,15 +385,6 @@ function scrollDown() {
     updatePath();
 }
 
-function pathChecker() {
-    if (realPoint() < 0) {realPoint() = 11; console.log("Tal hele ty")}
-    else console.log("Nic se nestalo");
-    if (realPoint() > 13) {
-        realPoint() = 0;
-        loops ++;
-    }
-}
-
 startButton.addEventListener('click', function(e) {
     for (let i = 0; i<introOpacityTransitions.length; i++) {
         introOpacityTransitions[i].classList.remove("fadeIn");
@@ -441,24 +415,25 @@ startButton.addEventListener('click', function(e) {
         rightButton.classList.add("pulse");
     },4000)
     
-    setTimeout(function() {
-        leftButton.style.display = `initial`;
-    },3000)
+    // setTimeout(function() {
+    //     leftButton.style.display = `initial`;
+    // },3000)
 
     
 });
 
-leftButton.addEventListener('mouseup', function(e) {
-    path-=checkPoints[realPoint()]
-    if (realPoint() == 12) loops--;
-    scrollUp();
-    pathPoint++;
-    counter++
+// leftButton.addEventListener('mouseup', function(e) {
+//     path-=checkPoints[realPoint()]
+//     if (realPoint() == 12) loops--;
+//     scrollUp();
+//     pathPoint++;
+//     counter++
     
-})
+// })
+
 rightButton.addEventListener('mouseup', function(e) {
     path+=checkPoints[realPoint()]
-    if (realPoint() == 12) loops++;
+    if (realPoint() == 11) loops++;
     scrollUp();
     pathPoint++;
     counter++
@@ -471,7 +446,7 @@ rightButton.addEventListener('mouseup', function(e) {
 function updatePath() {
     subHead.textContent = allText[realPoint()][0];
     headline.textContent = allText[realPoint()][1];
-    linkSec.innerHTML = "Zjistit více o "+`${allText[realPoint()][1]}`;
+    linkSec.textContent = "Zjistit více o "+`${allText[realPoint()][1]}`;
     description.style.lineHeight = '1.5em';
     description.innerHTML = allText[realPoint()][2];
 
@@ -484,15 +459,21 @@ function updatePath() {
     thirdBar.style.width = allText[realPoint()][6];
     fourthBar.style.width = allText[realPoint()][7];
 
-    if (loops%2 == 0) {person.src = allText[realPoint()][8]; rightButton.textContent = "dopředu";}
+    if (loops%2 == 0) {person.src = allText[realPoint()][8];}
     else {person.src = allText[realPoint()][9];}
 
-    if (realPoint() > 0 && realPoint() < 13) {
+    if (realPoint() > 0 && realPoint() < 12) {
         try {shine(buildings[realPoint()-1])}
         catch(error) {}
     } 
-    if (realPoint() == 0 && loops > 0) {
+    if (realPoint() == 11 && loops > 0) {
         cityGrow();
+        linkSec.style.display = "none"
+        linkSection.style.display = "none"
+    }
+    if (realPoint() == 0 && loops > 0) {
+        linkSec.style.display = "initial"
+        linkSection.style.display = "initial"
     }
 
 
@@ -513,10 +494,11 @@ function startIt() {
     headline.style.display = "initial"
     subHead.style.display = "initial"
     description.style.display = "initial";
+    linkSection.style.display = "initial"
     linkSec.style.display = "initial"
 
     // progressHeading.style.display = "initial";
-    backgroundPeer.style.display = "initial";
+    backgroundPeer.style.display = "block";
 }
 function realPath() {
     let i = path/360;
@@ -527,10 +509,10 @@ function realPath() {
 }
 
 function realPoint() {
-    let index = pathPoint/13;
+    let index = pathPoint/12;
     let j = Math.floor(index);
     index -= j;
-    return Math.round(13*index);
+    return Math.round(12*index);
 
 }
 
@@ -568,23 +550,23 @@ function spiralMove(degrees) {
 }
 
 function cityGrow() {
-    hideEverything();
-    fade(rightButton)
-    rightButton.style.pointerEvents = 'none';
-    city.classList.add('fadeIn')
+    // hideEverything();
+    // fade(rightButton)
+    // rightButton.style.pointerEvents = 'none';
+    // city.classList.add('fadeIn')
     // description.style.lineHeight = '2em';
     
-    subHead.innerHTML = "";
-    linkSec.innerHTML = "";
+    // subHead.innerHTML = "";
+    // linkSec.innerHTML = "";
     description.innerHTML = peerClaims[loops%2][1];
     headline.innerHTML = peerClaims[loops%2][0];
     
-    showEverything();
+    // showEverything();
     
-    fade(city);
+    // fade(city);
     hideCities();
-    rightButton.style.pointerEvents = 'auto';
-    rightButton.textContent = "zkusit znovu"
+    // rightButton.style.pointerEvents = 'auto';
+    // rightButton.textContent = "zkusit znovu"
 
     
 }

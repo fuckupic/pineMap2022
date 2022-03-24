@@ -2,6 +2,10 @@
   --quater: 25vh;
 }
 
+body {
+  margin: 0;
+}
+
 *  {
   box-sizing: border-box;
 }
@@ -156,6 +160,7 @@ p {
 
 .linkSec {
   display: inline-flex;
+  z-index: 5;
 }
 
 #arrow {
@@ -239,7 +244,6 @@ p {
   font-size: 4vh;
   margin-top: 0;
   margin-bottom: 0.5em;
-
   transition: opacity 1s ease;
 }
 
@@ -311,7 +315,7 @@ p {
 }
 
 .peer {
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   max-height: 15vh;
   width: 40vw;
   /* gap: 20vh; */
@@ -321,11 +325,11 @@ p {
   /* display: block; */
   position: fixed;
   z-index: 20;
-  /* background: rgba(183, 183, 183, 0.1); */
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); */
-  /* backdrop-filter: blur(16px) saturate(150%); */
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border-radius: 10px;
+  background: rgba(183, 183, 183, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(4px) saturate(150%);
+  -webkit-backdrop-filter: blur(4px) saturate(150%);
+  border-radius: 0 10px 10px 10px;
   transition: all 1s ease;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -340,9 +344,11 @@ p {
 }
 
 .builtCity {
-  bottom: 42.5%;
-  transform: translateY(150px);
+  bottom: 27%;
+  /* transform: translateY(150px); */
   z-index: 1;
+  position: absolute;
+  width: 30vw;
 }
 
 .plainInfo {
@@ -376,7 +382,7 @@ p {
 }
 .progressBars > h4:not(:first-child) {
   flex-grow: 1;
-  margin: 1vh 0 0 0;
+  margin: 0.25vh 0 0 0;
 }
 
 .progressBars h4:first-child {
@@ -385,7 +391,7 @@ p {
 
 .progressBars h4 {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: bold;
   font-size: 0.66em;
   margin-bottom: 0.25vh;
@@ -459,19 +465,16 @@ p {
   justify-items: center;
   align-items: center;
   font-size: 0.75em;
-
+  font-weight: bold;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   padding-left: 2em;
   padding-right: 2em;
-
   text-transform: uppercase;
   letter-spacing: 0.2em;
   padding: 1em 3em;
-
   border-radius: 5px;
   text-decoration: none;
-
   transition: transform 0.25s ease;
   border: none;
 }
@@ -541,13 +544,23 @@ button.active.right::after {
   left: -41.7%;
 }
 
-.buil {
-  transition: opacity 1s ease;
+#yellowBuilds #phase1-4,
+#yellowBuilds #phase2-4,
+#purpleBuilds #phase1-3,
+#purpleBuilds #phase2-3,
+#purpleBuilds #phase3-3,
+#blueBuilds #phase1-2,
+#blueBuilds #phase2-2,
+#blueBuilds #phase3-2,
+#greenBuilds #phase1,
+#greenBuilds #phase2,
+#greenBuilds #phase3 {
+  transition: opacity 1s ease-out;
 }
 
-svg#cityBuilWrapper {
-  align-self: center;
-  transform: scale(1.6) translateY(-1em);
+.builtCity svg {
+  z-index: 4;
+  pointer-events: none;
 }
 
 .peerHeadline,
@@ -561,10 +574,61 @@ svg#cityBuilWrapper {
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .introDesc {
+    font-size: 18px;
+    line-height: 1.25em;
+  }
+
   #pineSpiral {
-    height: 500px;
+    height: 150vw;
     right: -85vw;
-    bottom: 0;
+    bottom: -15vh;
+  }
+
+  .afterPar {
+    margin: auto 3vh;
+  }
+
+  .introText img {
+    position: fixed;
+    transform: translateY(30vh) scale(1.25);
+  }
+
+  .introHeading {
+    font-size: 24px;
+    margin-top: 12.5vh;
+  }
+
+  .startPine {
+    width: 100%;
+  }
+
+  .progressBars {
+    width: 60vw;
+  }
+
+  .arrows .active {
+    width: 85vw;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .progress #person {
+    margin-left: 0;
+    max-height: 5.5em;
+  }
+
+  .builtCity {
+    bottom: 26%;
+    width: 16em;
+  }
+
+  .info_br h2 {
+    margin: 0;
+  }
+
+  h4 {
+    margin-top: 0.25em;
   }
 
   .info_bar {
@@ -578,44 +642,51 @@ svg#cityBuilWrapper {
 
   .desc p {
     font-size: 15px;
+    line-height: 1.25em;
   }
 
   .link {
     width: 70vw;
   }
 
+  .plainInfo {
+    width: 80vh;
+  }
+
   .peer {
-    width: 65vw;
-    height: 7em;
+    width: 80vw;
+    height: 5em;
     transform: translateY(90px);
+    bottom: 25%;
+    padding: 2vh 1vh 1vh 0;
   }
 
   .progressBar {
-    width: 35vw;
-    height: 0.6em;
+    width: 52.5vw;
+    height: 0.4em;
     padding: 1px;
   }
 
   .fillingFirstQuaterBar {
-    height: 0.4em;
+    height: 0.3em;
   }
   .fillingSecondQuaterBar {
-    height: 0.4em;
+    height: 0.3em;
   }
   .fillingThirdQuaterBar {
-    height: 0.4em;
+    height: 0.3em;
   }
   .fillingFourthQuaterBar {
-    height: 0.4em;
+    height: 0.3em;
   }
 
   .progress {
-    transform: translate(20px, -10px);
+    transform: translate(20px, -7px);
     gap: 60px;
   }
 
   .progressBars h4 {
-    font-size: 8.5px;
+    font-size: 8px;
   }
 
   .arrows {
@@ -624,6 +695,14 @@ svg#cityBuilWrapper {
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 15px;
+  }
+
+  .info_bar h2 {
+    font-size: 23px;
+    margin-top: 0.25vh;
+    line-height: 1em;
+    /* flex-wrap: nowrap; */
+    /* line-break: revert; */
   }
 }
