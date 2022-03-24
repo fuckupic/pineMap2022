@@ -124,19 +124,6 @@ const progressHeadings = [
 
 
 const allText = [
-
-    // [
-    //     "",
-    //     "",
-    //     "",
-    //     "",
-    //     "",
-    //     "",
-    //     "",
-    //     "",
-    //     'stuff/imgs/manPhase1.svg',
-    //     'stuff/imgs/womanPhase1.svg'
-    // ],
     [
         "Rozvoj talentů",
         "Radovánek",
@@ -442,6 +429,25 @@ rightButton.addEventListener('mouseup', function(e) {
     }
     
 })
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '39') {
+        path+=checkPoints[realPoint()]
+        if (realPoint() == 11) loops++;
+        scrollUp();
+        pathPoint++;
+        counter++
+        if (counter === 1) {
+        startIt()
+    }
+    }
+}
+
 
 function updatePath() {
     subHead.textContent = allText[realPoint()][0];
