@@ -1,3 +1,5 @@
+const megaWrapper = document.querySelector('.pine-megaWrapper');
+
 const pineSpiral = document.querySelector('#pine-pineSpiral');
 const wrapper = document.querySelector('.pine-wrapper');
 const headline = document.querySelector('.pine-headline');
@@ -21,9 +23,9 @@ const introGrad = document.querySelector('.pine-introGrad')
 const afterDesc = document.querySelector('.pine-afterIntro')
 const afterPar = document.querySelector('.pine-afterPar')
 
-// const leftButton = document.querySelector('.left')
-const rightButton = document.querySelector('.pine-right')
-const startButton = document.querySelector('.pine-startPine')
+const rightButton = document.querySelector('.pine-right');
+const startButton = document.querySelector('.pine-startPine');
+const endButton = document.querySelector('.pine-btn-close');
 
 // const city = document.querySelector('#svgPineCity');
 
@@ -39,7 +41,7 @@ const fourthBar = document.querySelector('.pine-fillingFourthQuaterBar');
 
 const cityBuilds = document.querySelector('#pine-cityBuilds');
 
-const pop = new Audio('sounds/popSound.mp3')
+const pop = new Audio('/pruvodce/sounds/popSound.mp3')
 pop.volume = 0.01;
 
 var opacityTransitions = [
@@ -65,6 +67,7 @@ var opacityTransitions = [
 // ]
 
 var displayNone = [
+    megaWrapper,
     backgroundPeer,
     pineSpiral,
     headline,
@@ -74,7 +77,7 @@ var displayNone = [
     wrapper,
     afterDesc,
     rightButton,
-    // leftButton,
+    endButton,
     linkSec,
     linkSection,
     // navArrows[0],
@@ -385,17 +388,20 @@ function showEverything() {
     }
 }
 
-hideCities();
-setTimeout(function() {
+function startPine() {
+    hideCities();
+
+    megaWrapper.style.display ='initial'
     afterDesc.style.display = `initial`; 
     rightButton.style.display = `initial`;
-}
-    ,1.0*1000)
+    
+    setTimeout(function() {
+            rightButton.classList.remove("fadeIn");
+            rightButton.classList.add("pulse");
+        },3000)
 
-setTimeout(function() {
-        rightButton.classList.remove("fadeIn");
-        rightButton.classList.add("pulse");
-    },4000)
+}
+
 
 
 // Kliknutí na tlačítko začít
@@ -433,7 +439,7 @@ function scrollDown() {
 
 rightButton.addEventListener('mouseup', function(e) {
     path+=checkPoints[realPoint()]
-    if (realPoint() == (allText.length - 1)) loops++; console.log('Jedeme');
+    if (realPoint() == (allText.length - 1)) loops++;
     scrollUp();
     pathPoint++;
     counter++
@@ -499,11 +505,15 @@ function updatePath() {
 
 function startIt() {
     rightButton.classList.remove('pine-fadeIn');
+    document.querySelector('.pine-megaWrapper span').classList.add("pine-fadeOut");
 
     document.querySelector('.pine-afterIntro p').classList.remove("pine-fadeIn");
     document.querySelector('.pine-afterIntro p').classList.add("pine-fadeOut");
 
     afterPar.style.display = "none";
+
+    endButton.style.display = "flex"
+
     wrapper.style.display = "flex"
     pineSpiral.style.display = "initial"
 
@@ -520,7 +530,7 @@ function realPath() {
     let i = path/360;
     var j = Math.floor(i);
     i -= j;
-    console.log('real path is '+360*i)
+    // console.log('real path is '+360*i)
     return 360*i;
 }
 
@@ -561,7 +571,7 @@ function fade(element) {
 function spiralMove(degrees) {
     // pineSpiral.style.transitionDuration = "0.2s";
     pineSpiral.style.transform = 'translate(-10vw, -30vw) rotate('+degrees+'deg)'
-    console.log('točíSe')
+    // console.log('točíSe')
     // pineSpiral.style.transitionDuration = "1s"
     // pineSpiral.style.transform = 'translate(-10vw, -30vw) rotate('+deg+'deg)';
 }
@@ -591,9 +601,18 @@ function cityGrow() {
 function playSound(audio) {
     audio.currentTime = 0;
     audio.play();
-  }
+}
 
-  function sumArray(array) {
+function sumArray(array) {
     const sum = array.reduce((partialSum, a) => partialSum + a, 0);
-    console.log(sum); // 6
-  }
+    // console.log(sum);
+}
+
+endButton.addEventListener('click', function(e) {
+    megaWrapper.classList.remove('pine-fadeIn')
+    megaWrapper.classList.add('pine-fadeOut')
+    for (let i = 0; i<displayNone.length; i++) {
+        displayNone[i].style.display = `none`;
+    }
+    
+})
